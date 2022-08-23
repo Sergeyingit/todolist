@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+  tdl-app:
+    build:
+      context: .
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - tdl-db
+
+  tdl-db:
+    image: mysql:5.7
+    restart: always
+    container_name: tdl_db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: "tdl_db"
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
