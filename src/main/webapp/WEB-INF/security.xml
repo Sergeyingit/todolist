@@ -10,30 +10,23 @@
         <intercept-url pattern="/login*" access="permitAll()" />
         <intercept-url pattern="/user/*" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/" access="permitAll()" />
 
-<!--        <form-login-->
-<!--                login-page='/login'-->
-<!--                login-processing-url="/perform_login"-->
-<!--                default-target-url="/homepage.html"-->
-<!--                authentication-failure-url="/login.html?error=true"-->
-<!--                always-use-default-target="true"-->
-<!--        />-->
-<!--        <logout logout-success-url="/login.html" />-->
+        <form-login default-target-url="/"/>
+        <logout logout-success-url="/" />
+
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user" password="user" authorities="ROLE_USER" />
-                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
-            </user-service>
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+
             <password-encoder ref="encoder" />
         </authentication-provider>
     </authentication-manager>
     <b:bean id="encoder"
-            class = "org.springframework.security.crypto.password.NoOpPasswordEncoder"
-            factory-method = "getInstance">
+            class = "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     </b:bean>
+    <b:bean id="userDetailsServiceImpl" class="com.github.sergeyingit.todolist.service.security.UserDetailsServiceImpl" />
 
 </b:beans>

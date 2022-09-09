@@ -25,6 +25,8 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
