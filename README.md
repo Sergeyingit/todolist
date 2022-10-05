@@ -1,3 +1,9 @@
+## MVP
+ToDoList
+- User can register
+- User can create, update, delete tasks
+- Admin can create, update, delete tasks for other users
+- Admin can delete users
 ## Deployment
 Deployment process as easy as possible:
 Required software:

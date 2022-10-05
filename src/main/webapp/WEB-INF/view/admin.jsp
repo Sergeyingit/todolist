@@ -21,9 +21,6 @@
                 </tr>
             </thead>
             <c:forEach var="user" items="${users}">
-                <c:url var="tasks" value="/admin/users/tasks">
-                    <c:param name="userId" value="${user.id}"/>
-                </c:url>
                 <c:url var="deleteUser" value="/admin/users/delete">
                     <c:param name="userId" value="${user.id}"/>
                 </c:url>
@@ -31,7 +28,7 @@
                     <tr>
                         <td>${user.id}</td>
                         <td>${user.email}</td>
-                        <td><a href="${tasks}">taskCount</a></td>
+                        <td><a href="/user/${user.id}/tasks">${user.tasks.size()}</a></td>
                         <td>
                             <c:if test="${user.id != 1}">
                                 <a href="${deleteUser}">delete</a>

@@ -13,10 +13,10 @@
                     <security:authentication var="principal" property="principal"/>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
+                        Profile - ${principal.email}
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/user/${principal.id}">Tasks</a></li>
+                        <li><a class="dropdown-item" href="/user/${principal.id}/tasks">Tasks</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/logout">Loguot</a></li>
                       </ul>
