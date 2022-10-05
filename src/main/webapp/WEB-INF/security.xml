@@ -8,9 +8,9 @@
 <!--        <intercept-url pattern="/" access="permitAll()" />-->
 
         <intercept-url pattern="/login*" access="permitAll()" />
-        <intercept-url pattern="/user/*" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/" access="permitAll()" />
 
         <form-login default-target-url="/"/>

@@ -14,8 +14,9 @@
         <p class="pt-2">
             <ul class="d-flex text-white list-group justify-content-center flex-row justify-content-center">
                 <security:authorize access="isAuthenticated()">
+                    <security:authentication var="principal" property="principal"/>
                     <li>
-                        <a href="/user/" class="btn btn-primary">Create task</a>
+                        <a href="/user/${principal.id}/tasks/create" class="btn btn-primary">Create task</a>
                     </li>
 
 

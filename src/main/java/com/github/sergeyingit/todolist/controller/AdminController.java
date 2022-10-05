@@ -36,7 +36,8 @@ public class AdminController {
 
     @GetMapping("/users/tasks")
     public String getAdminPageUserTask(@RequestParam("userId") int userId, Model model) {
-        model.addAttribute("userId", userId);
+        User user = userService.findById(userId);
+        model.addAttribute("user", user);
         return "admin-users-task";
     }
 

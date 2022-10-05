@@ -1,6 +1,8 @@
 package com.github.sergeyingit.todolist.entity;
 
 import com.github.sergeyingit.todolist.validation.PasswordMatches;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -27,6 +30,7 @@ public class User implements UserDetails {
     @Column(name = "email")
     @NotBlank(message = "This field is require")
     @Pattern(regexp = "\\w+@[a-z]+\\.[a-z]+", message = "Not valid format for email")
+    @Size(max = 100)
     private String email;
 
     @Column(name = "password")
@@ -45,6 +49,10 @@ public class User implements UserDetails {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @OneToMany(mappedBy = "taskUser", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Task> tasks;
 
 
     public User() {
@@ -112,6 +120,14 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -139,5 +155,18 @@ public class User implements UserDetails {
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email);
     }
 }
