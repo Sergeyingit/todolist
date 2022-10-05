@@ -1,5 +1,12 @@
 # RELEASE NOTES
 
+## 1.0.0
+Implemented all the logic, planned up to MVP:
+* User can register
+* User can create, update, delete tasks
+* Admin can create, update, delete tasks for other users
+* Admin can delete users
+
 ## 0.4.0-SNAPSHOT
 
 * DTL-3: added CRUD for task
