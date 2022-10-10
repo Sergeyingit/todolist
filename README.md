@@ -13,9 +13,11 @@ Required software:
 
 to deploy application, switch to needed branch and run bash script:
 
-$ bash start.sh ${DB_USERNAME} ${DB_PASSWORD} ${DB_ROOT_PASSWORD}
+$ bash start.sh ${DB_USERNAME} ${DB_PASSWORD} ${DB_ROOT_PASSWORD} ${SMTP_USERNAME} ${SMTP_PASSWORD}
 
-or for test run (test values are using)
+or for test run (test values are using, need to smtp server and port in application.properties
+. username and password in application.properties or docker-compose-test.yml)
+
 
 $ bash test.sh
 
@@ -27,8 +29,9 @@ $ bash test.sh
 
 Чтобы развернуть приложение нужно запустить bash скрипт с параметрами
 
-$ bash start.sh ${DB_USERNAME} ${DB_PASSWORD} ${DB_ROOT_PASSWORD}
+$ bash start.sh ${DB_USERNAME} ${DB_PASSWORD} ${DB_ROOT_PASSWORD} ${SMTP_USERNAME} ${SMTP_PASSWORD}
 
-или запустить тестовую сборку без параметров (будут использованы тестовые значения в docker-compose-test.yml)
+или запустить тестовую сборку без параметров (будут использованы тестовые значения в docker-compose-test.yml,
+нужно указать smtp сервер, порт в application.properties.  username, password можно указать там же или в docker-compose-test.yml)
 
 $ bash test.sh

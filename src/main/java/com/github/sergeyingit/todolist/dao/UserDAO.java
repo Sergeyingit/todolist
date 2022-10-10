@@ -5,9 +5,12 @@ import com.github.sergeyingit.todolist.entity.User;
 import java.util.List;
 
 public interface UserDAO {
-    public List<User> getAllUsers();
-    public User findById(int id);
-    public User findByEmail(String email);
-    public void saveUser(User user);
-    public void deleteUser(int id);
+    List<User> getAllUsers();
+    User findById(int id);
+    User findByEmail(String email);
+    void saveUser(User user);
+    void deleteUser(int id);
+    List<User> getUserWithTasksForToday();
+
+
 }

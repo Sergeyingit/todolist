@@ -10,6 +10,8 @@ services:
     environment:
       DB_USERNAME: "bestuser"
       DB_PASSWORD: "bestuser"
+      SMTP_USERNAME: ""
+      SMTP_PASSWORD: ""
     depends_on:
       - tdl-db
 
