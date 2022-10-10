@@ -29,7 +29,7 @@ public class User implements UserDetails {
 
     @Column(name = "email")
     @NotBlank(message = "This field is require")
-    @Pattern(regexp = "\\w+@[a-z]+\\.[a-z]+", message = "Not valid format for email")
+    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$", message = "Not valid format for email")
     @Size(max = 100)
     private String email;
 

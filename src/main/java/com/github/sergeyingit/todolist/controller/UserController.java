@@ -4,6 +4,7 @@ import com.github.sergeyingit.todolist.entity.Task;
 import com.github.sergeyingit.todolist.entity.User;
 import com.github.sergeyingit.todolist.service.TaskService;
 import com.github.sergeyingit.todolist.service.UserService;
+import com.github.sergeyingit.todolist.service.email.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -25,6 +25,8 @@ public class UserController {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/{userId}/tasks")
     public String getUserPage(@PathVariable("userId") int userId, Model model, Authentication authentication) {
@@ -33,7 +35,7 @@ public class UserController {
         boolean isAdmin = authentication.getAuthorities().stream().anyMatch(a-> a.getAuthority().equals("ROLE_ADMIN"));
 
         User requestedUser = userService.findById(userId);
-
+        emailService.sendSimpleMailMessage("sergei.akkaynt@yandex.ru","demo","text");
 
         if (currentUser != null && currentUser.equals(requestedUser) || isAdmin && requestedUser != null) {
             model.addAttribute("user", requestedUser);

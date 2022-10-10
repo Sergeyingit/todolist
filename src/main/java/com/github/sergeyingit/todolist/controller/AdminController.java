@@ -2,6 +2,7 @@ package com.github.sergeyingit.todolist.controller;
 
 import com.github.sergeyingit.todolist.entity.User;
 import com.github.sergeyingit.todolist.service.UserService;
+import com.github.sergeyingit.todolist.service.email.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,12 +20,6 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
-
-
-//    @GetMapping("")
-//    public String getAdminPage() {
-//        return "admin";
-//    }
 
     @GetMapping("")
     public String getAdminPageUsers(Model model) {

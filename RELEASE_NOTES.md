@@ -1,5 +1,8 @@
 # RELEASE NOTES
 
+## 1.1.0-SNAPSHOT
+* TDL-4: add Email Reminder for task today
+
 ## 1.0.0
 Implemented all the logic, planned up to MVP:
 * User can register
@@ -9,16 +12,16 @@ Implemented all the logic, planned up to MVP:
 
 ## 0.4.0-SNAPSHOT
 
-* DTL-3: added CRUD for task
+* TDL-3: added CRUD for task
 
 ## 0.3.0-SNAPSHOT
 
-* DTL-2: added spring security
+* TDL-2: added spring security
 
 ## 0.2.0-SNAPSHOT
 
-* DTL-1: added deployment process to the project
+* TDL-1: added deployment process to the project
 
 ## 0.1.0-SNAPSHOT
 
-*   DTL-0: added Spring MVC skeleton project
+* TDL-0: added Spring MVC skeleton project

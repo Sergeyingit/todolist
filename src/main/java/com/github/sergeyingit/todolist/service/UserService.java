@@ -42,4 +42,10 @@ public interface UserService {
      * @param id int.
      */
     void deleteUser(int id);
+
+    /**
+     * Get {@link User} entity with task for today.
+     * @return collection of {@link User} entity.
+     */
+    List<User> getUserWithTasksForToday();
 }

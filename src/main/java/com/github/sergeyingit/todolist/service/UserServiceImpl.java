@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -61,5 +59,11 @@ public class UserServiceImpl implements UserService{
     @Transactional
     public void deleteUser(int id) {
         userDAO.deleteUser(id);
+    }
+
+    @Override
+    @Transactional
+    public List<User> getUserWithTasksForToday() {
+        return userDAO.getUserWithTasksForToday();
     }
 }
