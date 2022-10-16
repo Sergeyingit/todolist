@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+## 1.2.1-SNAPSHOT
+* TDL-5: add pdf on user page
+* fix access for CRUD task
+
 ## 1.1.0-SNAPSHOT
 * TDL-4: add Email Reminder for task today
 

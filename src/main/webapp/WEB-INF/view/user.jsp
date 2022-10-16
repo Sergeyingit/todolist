@@ -12,45 +12,45 @@
         <p class="pt-5">
         Tasks
         </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
+        <c:if test="${!empty user.tasks}">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
 
-            <c:if test="${!empty user.tasks}">
-            <c:forEach var="task" items="${user.tasks}">
-                <c:url var="updateTask" value="/user/${user.id}/tasks/update">
-                    <c:param name="taskId" value="${task.id}"/>
-                </c:url>
-                <c:url var="deleteTask" value="/user/${user.id}/tasks/delete">
-                    <c:param name="taskId" value="${task.id}"/>
-                </c:url>
-                <tbody>
-                    <tr>
-                        <td>${task.title}</td>
-                        <td>${task.description}</td>
-                        <td>${task.date}</td>
-                        <td>
-                            <a href="${updateTask}">update</a>
-                            <a href="${deleteTask}">delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </c:forEach>
-            </c:if>
-            <c:if test="${empty user.tasks}">
-                <tbody>
-                    <tr>
-                        No tasks
-                    </tr>
-                </tbody>
-            </c:if>
-        </table>
-    <a href="/user/${user.id}/tasks/create">New task </a>
+
+                <c:forEach var="task" items="${user.tasks}">
+                    <c:url var="updateTask" value="/user/${user.id}/tasks/update">
+                        <c:param name="taskId" value="${task.id}"/>
+                    </c:url>
+                    <c:url var="deleteTask" value="/user/${user.id}/tasks/delete">
+                        <c:param name="taskId" value="${task.id}"/>
+                    </c:url>
+                    <tbody>
+                        <tr>
+                            <td>${task.title}</td>
+                            <td>${task.description}</td>
+                            <td>${task.date}</td>
+                            <td>
+                                <a href="${updateTask}" class="btn btn-success">update</a>
+                                <a href="${deleteTask}" class="btn btn-danger">delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </c:forEach>
+            </table>
+        </c:if>
+
+        <c:if test="${empty user.tasks}">
+            <p>No tasks</p>
+        </c:if>
+
+    <a href="/user/${user.id}/tasks/create" class="btn btn-primary">New task </a>
+    <a href="/user/${user.id}/tasks/pdf" class="btn btn-primary">Create PDF </a>
     </div>
 <jsp:include page="sections/endPage.jsp" />
