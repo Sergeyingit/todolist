@@ -1,5 +1,8 @@
 # RELEASE NOTES
 
+## 1.3.0
+* TDL-6: added logging to file log.txt using AOP
+
 ## 1.2.1-SNAPSHOT
 * TDL-5: add pdf on user page
 * fix access for CRUD task
