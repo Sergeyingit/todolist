@@ -3,6 +3,7 @@ package com.github.sergeyingit.todolist.controller;
 import com.github.sergeyingit.todolist.entity.User;
 import com.github.sergeyingit.todolist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,13 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,4 +72,5 @@ public class MyController {
 
         return "redirect:/";
     }
+
 }
